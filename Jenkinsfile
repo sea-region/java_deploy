@@ -9,12 +9,11 @@ pipeline {
             steps {
                 script {
 
-                   Properties props = new Properties();
+                 
                     sh 'ls -ltr'
                     sh 'pwd'
 
-                File propsFile = new File(getClass().getResource('pipeline.properties'))
-                props.load(propsFile.newDataInputStream())
+                   def props = readProperties file: 'pipeline.properties'
                     
                     deliveryPipeline(
                         properties: props,
