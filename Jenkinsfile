@@ -1,3 +1,3 @@
 @Library('shared_library') _
 
-mavenPipeline()
+mavenPipeline 'https://github.com/sea-region/java_deploy.git'
