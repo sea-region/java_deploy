@@ -1,9 +1,7 @@
 @Library('shared_library') _
 
-import org.example.Utils
-
-def props = readProperties file: 'pipeline.properties'
-
-deliveryPipeline(
-properties: props,
-gitRepoUrl: 'https://github.com/sea-region/java_deploy.git'
+deliveryPipeline(branch: 'master', scmUrl: 'https://github.com/sea-region/java_deploy.git',
+                   email: 'team@example.com', serverPort: '8080',
+                   developmentServer: 'dev-myproject.mycompany.com',
+                   stagingServer: 'staging-myproject.mycompany.com',
+                   productionServer: 'production-myproject.mycompany.com')
