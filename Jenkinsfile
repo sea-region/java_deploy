@@ -1,16 +1,18 @@
+@Library('shared_library') _
+
+import org.example.Utils
+
 pipeline {
     agent any
     stages {
-        stage('Read File') {
+        stage('Delivery Pipeline') {
             steps {
                 script {
-                    sh 'ls -ltr'
-                    def fileContent = readFile 'pom.xml'
-                    echo "File content: ${fileContent}" // Display the content
-                    // Further process the fileContent as needed
-
-                     def props = readProperties file: 'pom.xml'
-                    echo "properties file is ${props}"
+                    def props = Utils.loadProperties(this, 'pipeline.properties')
+                    deliveryPipeline(
+                        properties: props,
+                        gitRepoUrl: 'https://github.com/sea-region/java_deploy.git'
+                    )
                 }
             }
         }
