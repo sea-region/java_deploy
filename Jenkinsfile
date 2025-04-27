@@ -2,25 +2,8 @@
 
 import org.example.Utils
 
-pipeline {
-    agent any
-    stages {
-        stage('Delivery Pipeline') {
-            steps {
-                script {
+def props = readProperties file: 'pipeline.properties'
 
-                 
-                    sh 'ls -ltr'
-                    sh 'pwd'
-
-                   def props = readProperties file: 'pipeline.properties'
-                    
-                    deliveryPipeline(
-                        properties: props,
-                        gitRepoUrl: 'https://github.com/sea-region/java_deploy.git'
-                    )
-                }
-            }
-        }
-    }
-}
+deliveryPipeline(
+properties: props,
+gitRepoUrl: 'https://github.com/sea-region/java_deploy.git'
