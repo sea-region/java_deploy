@@ -10,6 +10,7 @@ pipeline {
                 script {
 
                     props = new Properties();
+                    sh 'ls -ltr'
                     FileInputStream propFile = new FileInputStream("pipeline.properties");
                     props.load(propFile);
                     
