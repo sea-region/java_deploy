@@ -1,6 +1,6 @@
 @Library('shared_library') _
 
-import org.example.Utils
+import com.example.Utils
 
 def props = Utils.loadProperties(this, 'pipeline.properties')
 
