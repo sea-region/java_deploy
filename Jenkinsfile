@@ -8,7 +8,11 @@ pipeline {
         stage('Delivery Pipeline') {
             steps {
                 script {
-                    def props = Utils.loadProperties(this, '/pipeline.properties')
+
+                    props = new Properties();
+                    FileInputStream propFile = new FileInputStream("pipeline.properties");
+                    props.load(propFile);
+                    
                     deliveryPipeline(
                         properties: props,
                         gitRepoUrl: 'https://github.com/sea-region/java_deploy.git'
