@@ -9,11 +9,12 @@ pipeline {
             steps {
                 script {
 
-                    props = new Properties();
+                   Properties props = new Properties();
                     sh 'ls -ltr'
                     sh 'pwd'
-                    FileInputStream propFile = new FileInputStream("/var/lib/jenkins/workspace/shared_library1/pipeline.properties");
-                    props.load(propFile);
+
+                File propsFile = new File(getClass().getResource('pipeline.properties').toURI())
+                props.load(propsFile.newDataInputStream())
                     
                     deliveryPipeline(
                         properties: props,
