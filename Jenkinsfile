@@ -12,7 +12,7 @@ pipeline {
                     props = new Properties();
                     sh 'ls -ltr'
                     sh 'pwd'
-                    FileInputStream propFile = new FileInputStream("pipeline.properties");
+                    FileInputStream propFile = new FileInputStream("/var/lib/jenkins/workspace/shared_library1/pipeline.properties");
                     props.load(propFile);
                     
                     deliveryPipeline(
