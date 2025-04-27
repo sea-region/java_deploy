@@ -13,7 +13,7 @@ pipeline {
                     sh 'ls -ltr'
                     sh 'pwd'
 
-                File propsFile = new File(getClass().getResource('pipeline.properties').toURI())
+                File propsFile = new File(getClass().getResource('pipeline.properties'))
                 props.load(propsFile.newDataInputStream())
                     
                     deliveryPipeline(
