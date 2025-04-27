@@ -6,6 +6,9 @@ def props = Utils.loadProperties(this, 'pipeline.properties')
 
 pipeline {
     agent any
+    tools {
+        maven 'maven'
+    }
     stages {
         stage('Build') {
             steps {
