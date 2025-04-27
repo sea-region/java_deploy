@@ -11,6 +11,7 @@ pipeline {
 
                     props = new Properties();
                     sh 'ls -ltr'
+                    sh 'pwd'
                     FileInputStream propFile = new FileInputStream("pipeline.properties");
                     props.load(propFile);
                     
