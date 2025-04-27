@@ -1,40 +1,13 @@
-@Library('shared_library') _
-
-import com.example.Utils
-
-def props = Utils.loadProperties(this, 'pipeline.properties')
-
 pipeline {
     agent any
-    tools {
-        maven 'maven'
-    }
     stages {
-        stage('Build') {
+        stage('Read File') {
             steps {
                 script {
-                    build(goals: props['maven_goals'])
-                }
-            }
-        }
-        stage('Test') {
-            steps {
-                script {
-                    test()
-                }
-            }
-        }
-        stage('SonarQube') {
-            steps {
-                script {
-                    sonarqube(goals: props['sonar_goals'])
-                }
-            }
-        }
-        stage('Deploy') {
-            steps {
-                script {
-                    deploy(goals: props['deploy_goals'])
+                    sh 'ls -ltr'
+                    def fileContent = readFile 'pom.xml'
+                    echo "File content: ${fileContent}" // Display the content
+                    // Further process the fileContent as needed
                 }
             }
         }
